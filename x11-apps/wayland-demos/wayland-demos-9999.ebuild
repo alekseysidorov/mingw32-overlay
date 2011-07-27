@@ -17,7 +17,7 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+poppler +svg +clients
-	+compositor-drm +compositor-x11 +compositor-wayland compositor-openwfd"
+	+compositor-drm +compositor-x11 +compositor-wayland compositor-openwfd meego"
 
 DEPEND="x11-base/wayland
 	>=media-libs/mesa-9999[gles,wayland]
@@ -53,6 +53,7 @@ myeconfargs=(
 	$(use_enable compositor-x11 x11-compositor)
 	$(use_enable compositor-wayland wayland-compositor)
 	$(use_enable compositor-openwfd openwfd-compositor)
+	$(use_enable meego meego-tablet-shell)
 )
 
 src_prepare()
