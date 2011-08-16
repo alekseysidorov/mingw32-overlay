@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Qt3D binding for qml"
 HOMEPAGE="http://labs.qt.nokia.com/2011/05/20/qt-quick-3d-downloads-available/"
-SRC_URI="http://launchpad.net/appmenu-gtk/0.2/0.2.1/+download/${P}.tar.gz"
+SRC_URI="http://launchpad.net/appmenu-gtk/0.2/${P}/+download/${P}.tar.gz"
 
 LICENSE="|| ( GPL-3 GPL-2 )"
 SLOT="0"

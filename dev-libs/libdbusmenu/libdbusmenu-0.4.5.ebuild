@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	vala? ( dev-lang/vala:0 )
 	dev-util/intltool
 	dev-util/pkgconfig
-	dev-libs/json-glib"
+	>=dev-libs/json-glib-0.13"
 
 pkg_setup() {
 	if use vala && use !introspection ; then

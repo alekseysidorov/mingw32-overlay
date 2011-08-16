@@ -1,0 +1,2 @@
+#Released but doesn't work
+>=dev-libs/appmenu-qt-0.2.1
