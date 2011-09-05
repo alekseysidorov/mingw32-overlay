@@ -14,6 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="debug"
 
-RDEPEND=">=x11-libs/qt-gui-4.7.3-r2"
+RDEPEND=">x11-libs/qt-gui-4.7.4"
 
 S="${WORKDIR}"/"${P}"
