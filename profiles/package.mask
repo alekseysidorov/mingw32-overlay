@@ -1,3 +1,3 @@
 #Released but doesn't work
 >=dev-libs/appmenu-qt-0.2.1
->x11-libs/qtquick3d-1.0
+>=x11-libs/qtquick3d-9999

@@ -5,7 +5,7 @@
 EAPI=3
 inherit eutils qt4-r2
 
-MY_P="qtquick3d-tp1-src"
+MY_P="qtquick3d-tp2-src"
 
 DESCRIPTION="Qt3D binding for qml"
 HOMEPAGE="http://labs.qt.nokia.com/2011/05/20/qt-quick-3d-downloads-available/"
