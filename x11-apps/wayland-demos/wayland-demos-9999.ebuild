@@ -20,7 +20,7 @@ IUSE="+poppler +svg +clients
 	+compositor-drm +compositor-x11 +compositor-wayland compositor-openwfd meego"
 
 DEPEND="x11-base/wayland
-	>=media-libs/mesa-9999[gles,wayland]
+	>=media-libs/mesa-9999[gles2,wayland]
 	x11-libs/pixman
 	=x11-libs/libxkbcommon-9999
 	media-libs/libpng

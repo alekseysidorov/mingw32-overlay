@@ -1,0 +1,22 @@
+sys-devel/bison cxx? ( dev-libs/boost ) libevent? ( dev-libs/libevent ) mono? ( dev-lang/mono ) php? ( dev-lang/php ) ruby? ( dev-lang/ruby ) erlang? ( dev-lang/erlang ) java? ( >=virtual/jdk-1.5 dev-java/commons-lang:2.1 dev-java/slf4j-api:0 test? ( dev-java/junit ) ) >=app-admin/eselect-python-20091230 python? ( dev-lang/python ) >=dev-java/java-config-2.1.9-r1 java? ( >=dev-java/java-config-2.1.9-r1 ) java? ( >=dev-java/ant-core-1.7.0 >=dev-java/javatoolkit-0.3.0-r2 >=dev-lang/python-2.4 ) dev-lang/perl[-build]
+sys-devel/bison cxx? ( dev-libs/boost ) libevent? ( dev-libs/libevent ) mono? ( dev-lang/mono ) php? ( dev-lang/php ) ruby? ( dev-lang/ruby ) erlang? ( dev-lang/erlang ) java? ( >=virtual/jre-1.5 dev-java/commons-lang:2.1 dev-java/slf4j-api:0 test? ( dev-java/junit ) ) perl? ( dev-perl/Bit-Vector dev-perl/Class-Accessor ) >=app-admin/eselect-python-20091230 python? ( dev-lang/python ) >=dev-java/java-config-2.1.9-r1 java? ( >=dev-java/java-config-2.1.9-r1 ) dev-lang/perl[-build]
+0
+mirror://apache/thrift/0.7.0/thrift-0.7.0.tar.gz
+test
+http://thrift.apache.org/
+Apache-2.0
+A cross-language serialization and RPC framework
+~amd64 ~x86
+base distutils eutils java-ant-2 java-pkg-2 java-pkg-opt-2 java-utils-2 multilib perl-module portability python toolchain-funcs versionator
+cxx doc erlang java mono perl php python ruby +libevent source test vim-syntax elibc_FreeBSD elibc_FreeBSD java elibc_FreeBSD
+
+
+
+2
+
+compile configure install postinst postrm preinst prepare setup test unpack
+
+
+
+
+

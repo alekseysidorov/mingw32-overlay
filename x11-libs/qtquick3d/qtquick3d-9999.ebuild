@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/www-client/arora/arora-0.11.0.ebuild,v 1.2 2011/01/26 16:20:15 darkside Exp $
 
 EAPI=3
-inherit eutils qt4-r2 git
+inherit eutils qt4-r2 git-2
 
 MY_P="qt-quick3d"
 
