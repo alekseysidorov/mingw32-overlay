@@ -11,8 +11,8 @@ HOMEPAGE="http://www.gnu.org/software/libiconv/"
 SRC_URI="mirror://gnu/libiconv/${P}.tar.gz"
 
 LICENSE="GPL-3"
-SLOT="0"
-KEYWORDS="~sparc-fbsd ~x86-fbsd"
+SLOT="mingw"
+KEYWORDS="-*"
 IUSE=""
 
 DEPEND="!sys-libs/glibc

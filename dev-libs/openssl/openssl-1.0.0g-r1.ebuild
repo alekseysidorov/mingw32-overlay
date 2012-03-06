@@ -6,27 +6,25 @@ EAPI="4"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-MY_PN=openssl
-MY_P=${MY_PN}-${PV}
 REV="1.7"
 DESCRIPTION="full-strength general purpose cryptography library (including SSL v2/v3 and TLS v1)"
 HOMEPAGE="http://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-	http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/~checkout~/packages/${MY_PN}/${MY_PN}-c_rehash.sh?rev=${REV} -> ${MY_PN}-c_rehash.sh.${REV}"
+SRC_URI="mirror://openssl/source/${P}.tar.gz
+	http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/~checkout~/packages/${PN}/${PN}-c_rehash.sh?rev=${REV} -> ${PN}-c_rehash.sh.${REV}"
 
 LICENSE="openssl"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="zlib"
+SLOT="mingw"
+KEYWORDS="-*"
+IUSE="bindist rfc3779 sse2 zlib"
 
 # Have the sub-libs in RDEPEND with [static-libs] since, logically,
 # our libssl.a depends on libz.a/etc... at runtime.
-LIB_DEPEND="zlib? ( sys-libs/zlib[static_lib] )"
-S="${WORKDIR}/${MY_P}"
+DEPEND="zlib? ( sys-libs/zlib[static-libs] )"
+#PDEPEND="app-misc/ca-certificates"
 
 src_unpack() {
-	unpack ${MY_P}.tar.gz
-	cp "${DISTDIR}"/${MY_PN}-c_rehash.sh.${REV} "${WORKDIR}"/c_rehash || die
+	unpack ${P}.tar.gz
+	cp "${DISTDIR}"/${PN}-c_rehash.sh.${REV} "${WORKDIR}"/c_rehash || die
 }
 
 src_prepare() {
@@ -34,12 +32,12 @@ src_prepare() {
 	# that gets blown away anyways by the Configure script in src_configure
 	rm -f Makefile
 
-	epatch "${FILESDIR}"/${MY_PN}-1.0.0a-ldflags.patch #327421
-	epatch "${FILESDIR}"/${MY_PN}-1.0.0d-fbsd-amd64.patch #363089
-	epatch "${FILESDIR}"/${MY_PN}-1.0.0d-windres.patch #373743
-	epatch "${FILESDIR}"/${MY_PN}-1.0.0e-pkg-config.patch
-	epatch "${FILESDIR}"/${MY_PN}-1.0.0e-parallel-build.patch
-	epatch "${FILESDIR}"/${MY_PN}-1.0.0e-x32.patch
+	epatch "${FILESDIR}"/${PN}-1.0.0a-ldflags.patch #327421
+	epatch "${FILESDIR}"/${PN}-1.0.0d-fbsd-amd64.patch #363089
+	epatch "${FILESDIR}"/${PN}-1.0.0d-windres.patch #373743
+	epatch "${FILESDIR}"/${PN}-1.0.0e-pkg-config.patch
+	epatch "${FILESDIR}"/${PN}-1.0.0e-parallel-build.patch
+	epatch "${FILESDIR}"/${PN}-1.0.0e-x32.patch
 	epatch_user #332661
 
 	# disable fips in the build
@@ -101,7 +99,6 @@ src_configure() {
 		enable-mdc2 \
 		$(use_ssl !bindist rc5) \
 		enable-tlsext \
-		$(use_ssl kerberos krb5 --with-krb5-flavor=${krb5}) \
 		$(use_ssl rfc3779) \
 		$(use_ssl zlib) \
 		--prefix=/usr \
@@ -188,7 +185,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	has_version ${CATEGORY}/${MY_PN}:0.9.8 && return 0
+	has_version ${CATEGORY}/${PN}:0.9.8 && return 0
 	preserve_old_lib /usr/$(get_libdir)/lib{crypto,ssl}.so.0.9.8
 }
 
@@ -197,6 +194,6 @@ pkg_postinst() {
 	c_rehash "${ROOT}etc/ssl/certs" >/dev/null
 	eend $?
 
-	has_version ${CATEGORY}/${MY_PN}:0.9.8 && return 0
+	has_version ${CATEGORY}/${PN}:0.9.8 && return 0
 	preserve_old_lib_notify /usr/$(get_libdir)/lib{crypto,ssl}.so.0.9.8
 }

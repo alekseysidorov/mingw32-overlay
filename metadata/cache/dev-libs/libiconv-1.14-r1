@@ -1,12 +1,12 @@
 !sys-libs/glibc !sys-apps/man-pages
 !sys-libs/glibc !sys-apps/man-pages
-0
+mingw
 mirror://gnu/libiconv/libiconv-1.14.tar.gz
 
 http://www.gnu.org/software/libiconv/
 GPL-3
 GNU charset conversion library for libc which doesn't implement it
-~sparc-fbsd ~x86-fbsd
+-*
 libtool multilib toolchain-funcs
 
 
