@@ -1,0 +1,10 @@
+<layman>
+    <overlay type="git" src="git://github.com/gorthauer/mingw32-overlay.git" contact="https://github.com/gorthauer" status="unofficial" name="mingw32">
+	<link>
+	https://github.com/gorthauer/mingw32-overlay
+	</link>
+	<description>
+	Oo
+	</description>
+    </overlay>
+</layman>
