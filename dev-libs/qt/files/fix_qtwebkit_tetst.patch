@@ -1,0 +1,24 @@
+From 0d65b5930e6cb1b09c28a90893aca9c87eedb9b6 Mon Sep 17 00:00:00 2001
+From: Aleksey <gorthauer87@ya.ru>
+Date: Wed, 7 Mar 2012 14:47:48 +0400
+Subject: [PATCH] bugfix
+
+---
+ .../WebKit/qt/tests/hybridPixmap/hybridPixmap.pro  |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/src/3rdparty/webkit/Source/WebKit/qt/tests/hybridPixmap/hybridPixmap.pro b/src/3rdparty/webkit/Source/WebKit/qt/tests/hybridPixmap/hybridPixmap.pro
+index 9e80870..d8958a1 100644
+--- a/src/3rdparty/webkit/Source/WebKit/qt/tests/hybridPixmap/hybridPixmap.pro
++++ b/src/3rdparty/webkit/Source/WebKit/qt/tests/hybridPixmap/hybridPixmap.pro
+@@ -6,6 +6,7 @@ include(../tests.pri)
+ TARGET = hybridPixmap
+ SOURCES += widget.cpp
+ HEADERS += widget.h
++INCLUDEPATH += $$PWD
+ FORMS += widget.ui
+ RESOURCES += resources.qrc
+ CONFIG += console
+-- 
+1.7.8.5
+
