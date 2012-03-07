@@ -20,10 +20,10 @@ SLOT="4"
 
 IUSE="+iconv +ssl optimized-qmake phonon multimedia webkit declarative opengl svg -qt3support"
 
-DEPEND="sys-libs/zlib
-	ssl? ( dev-libs/openssl:mingw )
-	dev-libs/libiconv:mingw"
-RDEPEND="${DEPEND}"
+# DEPEND="sys-libs/zlib
+# 	ssl? ( dev-libs/openssl:mingw )
+# 	dev-libs/libiconv:mingw"
+# RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/fix_qtwebkit_test.patch"
@@ -61,49 +61,12 @@ src_prepare() {
 	base_src_prepare
 }
 
-src_configure() {
-	QT_INSTALL_PREFIX=${EPREFIX}/usr/${CTARGET}/usr
-	QTPREFIXDIR=${QT_INSTALL_PREFIX}
-
-	myconf+="
-		-xplatform $(qt_target_mkspecs_dir)
-		$(qt_use iconv)
-		$(qt_use optimized-qmake)
-		$(qt_use ssl openssl)
-		$(qt_use exceptions exceptions)
-		$(qt_use multimedia multimedia)
-		$(qt_use phonon phonon)
-		$(qt_use svg svg)
-		$(qt_use opengl opengl)
-		$(qt_use declarative declarative)
-		$(qt_use qt3support qt3support)
-		"
-
-	qt4-build_src_configure
-}
-
-
 # src_configure() {
-# 
-# 	# Set up installation directories
-# 	QT_INSTALL_PREFIX=${EPREFIX}/usr/${CTARGET}/usr	
+# 	QT_INSTALL_PREFIX=${EPREFIX}/usr/${CTARGET}/usr
 # 	QTPREFIXDIR=${QT_INSTALL_PREFIX}
 # 
-# 	# debug/release
-# 	if use debug; then
-# 		conf+=" -debug"
-# 	else
-# 		conf+=" -release"
-# 	fi
-# 
-# 	conf+="
+# 	myconf+="
 # 		-xplatform $(qt_target_mkspecs_dir)
-# 		-fast
-# 		-nomake examples -nomake demos
-# 		-nomake tests
-# 		-no-phonon-backend
-# 		-opensource -confirm-license
-# 		-prefix ${QTPREFIXDIR}
 # 		$(qt_use iconv)
 # 		$(qt_use optimized-qmake)
 # 		$(qt_use ssl openssl)
@@ -116,19 +79,58 @@ src_configure() {
 # 		$(qt_use qt3support qt3support)
 # 		"
 # 
-# 	echo ./configure ${conf}
-# 	./configure ${conf} || die "./configure failed"
+# 	qt4-build_src_configure
 # }
 
+
+src_configure() {
+
+	# Set up installation directories
+	QT_INSTALL_PREFIX=${EPREFIX}/usr/${CTARGET}/usr
+	QTPREFIXDIR=${QT_INSTALL_PREFIX}
+
+	# debug/release
+	if use debug; then
+		conf+=" -debug"
+	else
+		conf+=" -release"
+	fi
+
+	conf+="
+		-xplatform $(qt_target_mkspecs_dir)
+		-fast
+		-nomake examples -nomake demos
+		-nomake tests
+		-no-phonon-backend
+		-opensource -confirm-license
+		-prefix ${QTPREFIXDIR}
+		$(qt_use iconv)
+		$(qt_use optimized-qmake)
+		$(qt_use ssl openssl)
+		$(qt_use exceptions exceptions)
+		$(qt_use multimedia multimedia)
+		$(qt_use phonon phonon)
+		$(qt_use svg svg)
+		$(qt_use opengl opengl)
+		$(qt_use declarative declarative)
+		$(qt_use qt3support qt3support)
+		"
+
+	echo ./configure ${conf}
+	./configure ${conf} || die "./configure failed"
+}
+
 src_compile() {
-	addwrite ${QTPREFIXDIR}
+#	addwrite ${QTPREFIXDIR}
 	emake || die "Make failed!"
 }
 
 src_install() {
 	emake install || die "Install failed"
+	
 	into ${QT_INSTALL_PREFIX}
 	dobin "${S}"/bin/{qmake,moc,rcc,uic,lrelease} || die "dobin failed"
+	dodir ${QTPREFIXDIR} ${QT_INSTALL_PREFIX} || die "dodir failed"
 
 	dosym ${QT_INSTALL_PREFIX}/bin/qmake ${EPREFIX}/usr/bin/${CTARGET}-qmake
 	dosym ${QT_INSTALL_PREFIX}/bin/moc ${EPREFIX}/usr/bin/${CTARGET}-moc
